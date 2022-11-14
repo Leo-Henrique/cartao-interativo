@@ -52,6 +52,123 @@
     <title>Cartão interativo | Leonardo Henrique</title>
 </head>
 <body>
+
+    <main>
+        <div></div>
+
+        <h1 class="h1">
+            Cartão interativo
+        </h1>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-front">
+                    <div class="icons">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="47" fill="none">
+                            <ellipse cx="23.478" cy="23.5" fill="#fff" rx="23.478" ry="23.5"/>
+                            <path stroke="#fff" d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"/>
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="47" fill="none">
+                            <ellipse cx="23.478" cy="23.5" fill="#fff" rx="23.478" ry="23.5"/>
+                            <path stroke="#fff" d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"/>
+                          </svg>
+                    </div>
+
+                    <div class="numbers"></div>
+
+                    <div>
+                        <span class="name">
+                            Jane Appleseed
+                        </span>
+
+                        <time datetime="">
+                            00/00
+                        </time>
+                    </div>
+                </div>
+
+                <div class="card-back">
+                    <span class="security-code">
+                        000
+                    </span>
+                </div>
+            </div>
+
+            <form class="form"
+            autocomplete="off">
+                <div class="form-fields">
+                    <label for="cardholder">
+                        Nome do titular
+                    </label>
+                    <input type="text" 
+                    id="cardholder"
+                    name="cardholder"
+                    placeholder="p. ex. Leonardo Henrique"
+                    title="O nome completo do titular que será impresso no cartão"
+                    autofocus />
+    
+                    <label for="card-number">
+                        Número do cartão
+                    </label>
+                    <input type="number"
+                    id="card-number"
+                    name="card-number"
+                    placeholder="p. ex. 1234 5678 9123 4567"
+                    title="O número do cartão, contendo 16 dígitos" />
+    
+                    <fieldset class="expiration-container">
+                        <legend>
+                            Data de validade
+                        </legend>
+    
+                        <label for="expiration-month">
+                            Mês
+                        </label>
+                        <input type="number"
+                        id="expiration-month"
+                        name="expiration-month"
+                        placeholder="Mês"
+                        title="Mês da data de validade do cartão" />
+    
+                        <label for="expiration-year">
+                            Ano
+                        </label>
+                        <input type="number"
+                        id="expiration-year"
+                        name="expiration-year"
+                        placeholder="Ano"
+                        title="Ano da data de validade do cartão" />
+                    </fieldset>
+    
+                    <label for="security-code">
+                        <abbr title="Código de segurança do cartão">
+                            CVV
+                        </abbr>
+                    </label>
+                    <input type="number"
+                    id="security-coder"
+                    name="security-code"
+                    placeholder="p. ex. 123"
+                    title="O código de segurança impresso no verso do cartão, contendo 3 dígitos" />
+                </div>
+
+                <div class="form-result">
+                    <p class="title">
+                        Obrigado!
+                    </p>
+
+                    <p class="description">
+                        Adicionamos os dados do seu cartão.
+                    </p>
+                </div>
+
+                <button type="button">
+                    Confirmar
+                </button>
+            </form>
+        </div>
+    </main>
     
 </body>
 </html>
