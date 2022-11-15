@@ -1,0 +1,10 @@
+body {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: $body;
+    line-height: 1.5;
+    font-weight: 500;
+
+    @include breakpoint-sm {
+        font-size: $body-sm;
+    }
+}

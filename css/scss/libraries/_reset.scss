@@ -3,84 +3,98 @@
 
     Inspired by meyerweb reset | https://meyerweb.com/eric/tools/css/reset/
 */
-
-// ajustes no meyerweb reset
-*,
-*::after,
-*::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-    border: none;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+*, *::after, *::before, a, abbr, address,
+article, aside, audio, b, bdi, bdo,
+blockquote, body, br, button, canvas,
+caption, cite, code, col, colgroup, data,
+datalist, dd, del, details, dfn, dialog, div,
+dl, dt, em, embed, fieldset, figcaption,
+figure, footer, form, h1, h2, h3, h4, h5,
+h6, header, hgroup, hr, html, i, iframe,
+img, input, ins, kbd, label, legend, li,
+main, mark, menu, meter, nav, noscript,
+object, ol, optgroup, option, output, p,
+pre, progress, q, rp, rt, ruby, s, samp,
+section, select, slot, small, span, strong,
+sub, summary, sup, table, tbody, td,
+template, textarea, tfoot, th, thead,
+time, tr, u, ul, var, video, wbr {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-article, aside, details, figcaption, figure, footer, 
-header, hgroup, img, menu, nav, section, svg, 
+
+article, aside, details, figcaption, figure, footer,
+header, hgroup, img, menu, nav, section, svg,
 video {
-	display: block;
+  display: block;
 }
+
 blockquote, q {
-	quotes: none;
-
-    &::before,
-    &::after {
-        content: "";
-        content: none;
-    }
+  quotes: none;
 }
+
+blockquote::before, blockquote::after, q::before, q::after {
+  content: "";
+  content: none;
+}
+
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-
-// personalizando e setando padrões
 :root {
-    // base 10px
-    font-size: 62.5%;
-    scroll-behavior: smooth;
-    // remove o atraso de clique no smartphone windows
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }
+
 body {
-	// remove a caixa azul ao clicar em botões pelos dispositivos móveis
-    // propriedade fora dos padrões, seu uso pode ser incerto e inconstante entre navegadores!
-	-webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
-a, button, input, 
+
+a, button, input,
 select, textarea {
-    // remove o estilo de borda padrão no dispositivo móvel
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
+
 a, abbr[title] {
-    text-decoration: none;
+  text-decoration: none;
 }
+
 abbr[title] {
-    cursor: help;
-    // as linhas de sublinhados e textos tachados não são interrompidas pela tipografia / texto
-    -webkit-text-decoration-skip-ink: none;
-	text-decoration-skip-ink: none;
+  cursor: help;
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
 }
+
 button {
-    background: none;
-    text-align: left;
+  background: none;
+  text-align: left;
 }
+
 em {
-    font-style: italic;
+  font-style: italic;
 }
+
 strong {
-    font-weight: bold;
+  font-weight: bold;
 }
+
 img, video {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }

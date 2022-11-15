@@ -1,0 +1,12 @@
+@mixin desktop-supported {
+    @media not all and (hover: none) {
+        @content;
+    }
+}
+
+// breakpoints
+@mixin breakpoint-sm {
+    @media (max-width: 575.98px) {
+        @content;
+    }
+}
