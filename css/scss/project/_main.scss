@@ -3,8 +3,173 @@ body {
     font-size: $body;
     line-height: 1.5;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
 
     @include breakpoint-sm {
         font-size: $body-sm;
+    }
+}
+.hidden {
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+.main {
+    padding: 4rem 0;
+
+    & &-bg {
+        width: 37%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        @include background-image("bg-main-desktop.png");
+    }
+    & &-container {
+        max-width: calc(1050px + 30px);
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 6rem;
+    }
+}
+.main-container .card {
+    flex: 0 1 540px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+    @include small-text($support-light-1);
+    // border: 1px solid red;
+
+    .card-front,
+    .card-back {
+        flex-basis: 245px;
+        width: 450px;
+        padding: 2.5rem 3rem;
+        border-radius: 15px;
+        box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.12),
+        10px 10px 15px rgba(0, 0, 0, 0.15),
+        18px 17px 24px rgba(0, 0, 0, 0.12);
+    }
+    .card-front {
+        @include background-image("bg-card-front.png");
+
+        &-icon {
+            margin-bottom: 6rem;
+        }
+        &-numbers {
+            margin-bottom: 2.2rem;
+            font-size: $title;
+        }
+        &-footer {
+            display: flex;
+            justify-content: space-between;
+            column-gap: 2rem;
+        }
+    }
+    .card-back {
+        @include background-image("bg-card-back.png");
+        margin-left: auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 3rem 6rem;
+    }
+}
+.main-container .form {
+    max-width: 380px;
+    margin-left: auto;
+
+    .form-fields label,
+    .form-fields legend {
+        display: block;
+        margin-bottom: 0.6rem;
+        @include small-text(#000);
+    }
+    .form-fields input,
+    #btnConfirm {
+        border-radius: 10px;
+        padding: 1.2rem;
+    }
+    .form-fields input {
+        width: 100%;
+        margin-bottom: 3rem;
+        border: solid 1px $support-light-2;
+        border-radius: 10px;
+        outline: none;
+        transition: border-color 200ms ease-in-out;
+
+        &::placeholder {
+            color: $support-light-2;
+        }
+        @include desktop-supported {
+            &:hover {
+                border-color: $primary;
+            }
+        }
+        &:focus {
+            border-color: $primary;
+        }
+        &:active {
+            border-color: $primary-light-2;
+        }
+        &[type=number] {
+            -moz-appearance: textfield;
+        }
+        &[type=number]::-webkit-outer-spin-button,
+        &[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+    .form-fields .small-fields {
+        display: flex;
+        column-gap: 2rem;
+
+        .expiration-container  {
+            flex: 1 170px;
+            display: flex;
+            column-gap: 1.5rem;
+
+        }
+        .cvv-container {
+            flex: 1 190px;
+        }
+    }
+
+    .form-result {
+        display: none;
+    }
+    #btnConfirm {
+        display: block;
+        width: 100%;
+        background-color: $support-dark-1;
+        color: $support-light-1;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 200ms ease-in-out;
+
+        @include desktop-supported {
+            &:hover {
+                background-color: $primary - 30%;
+            }
+        }
+        &:active {
+            background-color: $primary-light-1 - 30%;
+        }
     }
 }

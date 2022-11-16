@@ -56,30 +56,25 @@
     <main class="main">
         <div class="main-bg"></div>
 
-        <h1 class="main-h1">
+        <h1 class="main-h1 hidden">
             Cartão interativo
         </h1>
 
-        <div class="container">
+        <div class="main-container">
             <div class="card">
                 <div class="card-front">
-                    <div class="card-front-icons">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="47" fill="none">
-                            <ellipse cx="23.478" cy="23.5" fill="#fff" rx="23.478" ry="23.5"/>
-                            <path stroke="#fff" d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"/>
-                        </svg>
-
+                    <div class="card-front-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="84" height="47" fill="none">
                             <ellipse cx="23.478" cy="23.5" fill="#fff" rx="23.478" ry="23.5"/>
                             <path stroke="#fff" d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"/>
                         </svg>
                     </div>
 
-                    <div class="card-front-numbers"></div>
+                    <div class="card-front-numbers">0000 0000 0000 0000</div>
 
                     <div class="card-front-footer">
                         <span class="name">
-                            Jane Appleseed
+                            Leonardo Henrique
                         </span>
 
                         <time datetime="">
@@ -117,40 +112,46 @@
                     placeholder="p. ex. 1234 5678 9123 4567"
                     title="O número do cartão, contendo 16 dígitos" />
     
-                    <fieldset class="expiration-container">
-                        <legend>
-                            Data de validade
-                        </legend>
-    
-                        <label for="expiration-month">
-                            Mês
-                        </label>
-                        <input type="number"
-                        id="expiration-month"
-                        name="expiration-month"
-                        placeholder="Mês"
-                        title="Mês da data de validade do cartão" />
-    
-                        <label for="expiration-year">
-                            Ano
-                        </label>
-                        <input type="number"
-                        id="expiration-year"
-                        name="expiration-year"
-                        placeholder="Ano"
-                        title="Ano da data de validade do cartão" />
-                    </fieldset>
-    
-                    <label for="security-code">
-                        <abbr title="Código de segurança do cartão">
-                            CVV
-                        </abbr>
-                    </label>
-                    <input type="number"
-                    id="security-coder"
-                    name="security-code"
-                    placeholder="p. ex. 123"
-                    title="O código de segurança impresso no verso do cartão, contendo 3 dígitos" />
+                    <div class="small-fields">
+                        <fieldset class="expiration-container">
+                            <legend>
+                                Data de validade
+                            </legend>
+        
+                            <label class="hidden" 
+                            for="expiration-month">
+                                Mês
+                            </label>
+                            <input type="number"
+                            id="expiration-month"
+                            name="expiration-month"
+                            placeholder="Mês"
+                            title="Mês da data de validade do cartão" />
+        
+                            <label class="hidden" 
+                            for="expiration-year">
+                                Ano
+                            </label>
+                            <input type="number"
+                            id="expiration-year"
+                            name="expiration-year"
+                            placeholder="Ano"
+                            title="Ano da data de validade do cartão" />
+                        </fieldset>
+        
+                        <div class="cvv-container">
+                            <label for="security-code">
+                                <abbr title="Código de segurança do cartão">
+                                    CVV
+                                </abbr>
+                            </label>
+                            <input type="number"
+                            id="security-coder"
+                            name="security-code"
+                            placeholder="p. ex. 123"
+                            title="O código de segurança impresso no verso do cartão, contendo 3 dígitos" />
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-result">
@@ -163,7 +164,8 @@
                     </p>
                 </div>
 
-                <button type="button">
+                <button id="btnConfirm"
+                type="button">
                     Confirmar
                 </button>
             </form>

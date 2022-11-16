@@ -1,11 +1,15 @@
 // colors
-$primary: linear-gradient(#6448fe to #600594);
+$primary-light-2: #6448fe +50%;
+$primary-light-1: #6448fe;
+$primary:#600594;
 $support-light-1: #ffffff;
-$support-light-2: #dedddf;
+$support-light-2: #dedddf - 20%;
 $support-light-3: #8e8593;
 $support-dark-1: #21092f;
 $error: #ff5252;
 
 // typography
+$title: 2.9rem;
 $body: 1.8rem;
 $body-sm: 1.6rem;
+$small: 1.4rem;

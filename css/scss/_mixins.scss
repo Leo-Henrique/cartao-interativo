@@ -10,3 +10,15 @@
         @content;
     }
 }
+
+// project
+@mixin background-image($file-name) {
+    background: url("../images/" + $file-name) center / cover no-repeat $primary;
+}
+
+@mixin small-text($color) {
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: $color;
+    font-size: $small;
+}
