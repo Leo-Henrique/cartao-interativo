@@ -8,6 +8,10 @@ body {
     justify-content: center;
     min-height: 100vh;
 
+    @include breakpoint-md {
+        display: initial;
+        min-height: initial;
+    }
     @include breakpoint-sm {
         font-size: $body-sm;
     }
@@ -27,13 +31,26 @@ body {
     padding: 4rem 0;
 
     & &-bg {
-        width: 37%;
+        width: 34%;
         position: absolute;
         z-index: -1;
         top: 0;
         bottom: 0;
         left: 0;
         @include background-image("bg-main-desktop.png");
+
+        @media (min-width: 1400px) {
+            width: 40%;
+        }
+        @include breakpoint-md {
+            width: 100%;
+            bottom: initial;
+            height: 355px;
+            background-image: url("../images/bg-main-mobile.png");
+        }
+        @include breakpoint-sm {
+            height: 245px;
+        }
     }
     & &-container {
         max-width: calc(1050px + 30px);
@@ -45,41 +62,106 @@ body {
         justify-content: space-between;
         align-items: center;
         column-gap: 6rem;
+
+        @include breakpoint-md {
+            flex-direction: column;
+            row-gap: 5rem;
+        }
     }
 }
 .main-container .card {
-    flex: 0 1 540px;
+    flex: 0 540px;
     display: flex;
     flex-direction: column;
     row-gap: 4rem;
+    white-space: nowrap;
     @include small-text($support-light-1);
-    // border: 1px solid red;
 
+    @include breakpoint-md {
+        flex: initial;
+        row-gap: initial;
+        width: 100%;
+        max-width: 500px;
+        padding: 0 3rem;
+    }
+    @include breakpoint-sm {
+        padding: 0 1rem;
+    }
     .card-front,
     .card-back {
+        width: 100%;
+        max-width: 450px;
         flex-basis: 245px;
-        width: 450px;
         padding: 2.5rem 3rem;
         border-radius: 15px;
         box-shadow: 
         5px 5px 10px rgba(0, 0, 0, 0.12),
         10px 10px 15px rgba(0, 0, 0, 0.15),
         18px 17px 24px rgba(0, 0, 0, 0.12);
+
+        @include breakpoint-md {
+            box-shadow: 
+            -5px 5px 10px rgba(0, 0, 0, 0.12),
+            -10px 10px 15px rgba(0, 0, 0, 0.15),
+            -18px 17px 24px rgba(0, 0, 0, 0.12);
+        }
+        @include breakpoint-sm {
+            max-width: 285px;
+            flex: 1 165px;
+            padding: 2rem;
+            border-radius: 10px;
+        }
     }
     .card-front {
         @include background-image("bg-card-front.png");
 
+        @include breakpoint-md {
+            order: 1;
+            margin-top: -106px;
+            margin-left: -3rem;
+        }
+        @include breakpoint-sm {
+            margin-top: -72px;
+            margin-left: -1rem;
+        }
         &-icon {
             margin-bottom: 6rem;
+
+            @include breakpoint-sm {
+                margin-bottom: 3rem;
+
+                svg {
+                    width: 55px;
+                    height: auto;
+                }
+            }
         }
         &-numbers {
+            text-overflow: ellipsis;
+            overflow: hidden;
             margin-bottom: 2.2rem;
-            font-size: $title;
+            @include font-size($title);
+
+            @include breakpoint-sm {
+                margin-bottom: 2rem;
+                font-size: 1.9rem;
+            }
         }
         &-footer {
             display: flex;
             justify-content: space-between;
-            column-gap: 2rem;
+            column-gap: 4rem;
+
+            @include breakpoint-sm {
+                font-size: 1rem;
+                letter-spacing: 1.2px;
+            }
+            .name {
+                display: inline-block;
+                max-width: 250px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
     .card-back {
@@ -89,12 +171,33 @@ body {
         justify-content: flex-end;
         align-items: center;
         padding: 3rem 6rem;
+
+        @include breakpoint-md {
+            margin-right: -3rem;
+        }
+        @include breakpoint-sm {
+            padding: 3.5rem;
+            margin-right: -1rem;
+
+            .security-code {
+                font-size: 1.1rem;
+            }
+        }
     }
 }
 .main-container .form {
-    max-width: 380px;
+    flex: 0 380px;
     margin-left: auto;
 
+    @include breakpoint-md {
+        max-width: 500px;
+        width: 100%;
+        flex: initial;
+        margin-left: initial;
+    }
+    // .form-fields {
+    //     display: none
+    // }
     .form-fields label,
     .form-fields legend {
         display: block;
@@ -105,6 +208,10 @@ body {
     .form-fields .small-fields,
     #btnConfirm {
         margin-top: 3rem;
+
+        @include breakpoint-sm {
+            margin-top: 2rem;
+        }
     }
     .form-fields input,
     #btnConfirm {
@@ -120,7 +227,6 @@ body {
     }
     .form-fields input {
         width: 100%;
-        // margin-bottom: 3rem;
         border: solid 1px $support-light-2;
         border-radius: 10px;
         outline: none;
@@ -154,29 +260,62 @@ body {
     .form-fields .small-fields {
         display: flex;
         column-gap: 2rem;
-        // border: 1px solid red;
 
+        @include breakpoint-sm {
+            align-items: flex-end;
+        }
         .expiration-container  {
-            flex: 1 170px;
+            flex: 0 0 170px;
             display: flex;
             flex-wrap: wrap;
             column-gap: 1rem;
-            // border: 1px solid blue;
+
+            @include breakpoint-md {
+                flex: 1;
+            }
         }
         .expiration-container input {
             flex: 0 0 80px;
-            // border: 1px solid red;
+
+            @include breakpoint-md {
+                flex: 1;
+            }
         }
         .expiration-container .error-msg {
             flex: 1 100%;
         }
         .cvv-container {
-            flex: 1 190px;
+            flex: 190px;
+
+            @include breakpoint-md {
+                flex: 1;
+            }
         }
     }
-
+    // ==========================================
     .form-result {
+        width: 100%;
+        text-align: center;
         display: none;
+
+        &-icon svg {
+            margin: 0 auto calc(1rem * 2);
+        }
+        &-title {
+            @include font-size($title);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: $support-dark-1;
+            margin-bottom: 1rem;
+        }
+        &-description {
+            color: $support-light-3;
+            margin-bottom: 5rem; // replace margin-top #btnConfirm
+
+            @include breakpoint-md {
+                margin-bottom: initial;
+            }
+        }
     }
     #btnConfirm {
         display: block;
