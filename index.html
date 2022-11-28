@@ -74,23 +74,26 @@
                         </svg>
                     </div>
 
-                    <div class="card-front-numbers">
+                    <div class="card-front-numbers"
+                    data-card="cardNumber">
                         0000 0000 0000 0000
                     </div>
 
                     <div class="card-front-footer">
-                        <span class="name">
-                            Leonardo Henrique da Silva Nunes
+                        <span class="name"
+                        data-card="cardholder">
+                            Leonardo Henrique
                         </span>
 
                         <time>
-                            00/00
+                            <span data-card="expirationMonth">00</span>/<span data-card="expirationYear">00</span>
                         </time>
                     </div>
                 </div>
 
                 <div class="card-back">
-                    <span class="security-code">
+                    <span class="security-code"
+                    data-card="securityCode">
                         000
                     </span>
                 </div>
@@ -111,12 +114,12 @@
 
                     <!-- <span class="error-msg">Erro </span> -->
     
-                    <label for="card-number">
+                    <label for="cardNumber">
                         Número do cartão
                     </label>
-                    <input type="number"
-                    id="card-number"
-                    name="card-number"
+                    <input type="text"
+                    id="cardNumber"
+                    name="cardNumber"
                     placeholder="p. ex. 1234 5678 9123 4567"
                     title="O número do cartão, contendo 16 dígitos" />
 
@@ -130,22 +133,22 @@
                             </legend>
         
                             <label class="hidden" 
-                            for="expiration-month">
+                            for="expirationMonth">
                                 Mês
                             </label>
                             <input type="number"
-                            id="expiration-month"
-                            name="expiration-month"
+                            id="expirationMonth"
+                            name="expirationMonth"
                             placeholder="Mês"
                             title="Mês da data de validade do cartão" />
         
                             <label class="hidden" 
-                            for="expiration-year">
+                            for="expirationYear">
                                 Ano
                             </label>
                             <input type="number"
-                            id="expiration-year"
-                            name="expiration-year"
+                            id="expirationYear"
+                            name="expirationYear"
                             placeholder="Ano"
                             title="Ano da data de validade do cartão" />
 
@@ -153,14 +156,14 @@
                         </fieldset>
 
                         <div class="cvv-container">
-                            <label for="security-code">
+                            <label for="securityCode">
                                 <abbr title="Código de segurança do cartão">
                                     CVV
                                 </abbr>
                             </label>
                             <input type="number"
-                            id="security-coder"
-                            name="security-code"
+                            id="securityCode"
+                            name="securityCode"
                             placeholder="p. ex. 123"
                             title="O código de segurança impresso no verso do cartão, contendo 3 dígitos" />
 
@@ -199,6 +202,9 @@
             </form>
         </div>
     </main>
+
+    <script type="module"
+    src="js/script.js"></script>
     
 </body>
 </html>

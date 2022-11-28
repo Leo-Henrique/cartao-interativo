@@ -741,7 +741,9 @@ body {
   border: solid 1px #cac9cb;
   border-radius: 10px;
   outline: none;
-  transition: border-color 200ms ease-in-out;
+  transition-property: border-color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
 }
 
 .main-container .form .form-fields input::placeholder {
@@ -772,6 +774,7 @@ body {
 
 .main-container .form .form-fields input.error {
   border-color: #ff5252;
+  box-shadow: inset 0 0 0 1px #ff5252;
 }
 
 .main-container .form .form-fields .small-fields {

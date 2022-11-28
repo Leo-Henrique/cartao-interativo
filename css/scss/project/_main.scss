@@ -230,7 +230,9 @@ body {
         border: solid 1px $support-light-2;
         border-radius: 10px;
         outline: none;
-        transition: border-color 200ms ease-in-out;
+        transition-property: border-color, box-shadow;
+        transition-duration: 200ms;
+        transition-timing-function: ease-in-out;
 
         &::placeholder {
             color: $support-light-2;
@@ -255,6 +257,7 @@ body {
         }
         &.error {
             border-color: $error;
+            box-shadow: inset 0 0 0 1px $error;
         }
     }
     .form-fields .small-fields {
