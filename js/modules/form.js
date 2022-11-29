@@ -12,6 +12,15 @@ export default class CardData {
     get element() {
         return document.querySelector(`[data-card="${this.id}"]`);
     }
+    get submit() {
+        return document.getElementById("btnConfirm");
+    }
+    get allFields() {
+        return Array.from(document.querySelectorAll(".form input"));
+    }
+    get allElements() {
+        return Array.from(document.querySelectorAll(`[data-card]`));
+    }
     handleFill(field) {
         const value = field.value;
         const cancelCharacter = (regex) => {
@@ -29,23 +38,46 @@ export default class CardData {
         const acceptCharacter = () => {
             if (this.format) {
                 const reject = this.format.reject;
-                const accept = this.format.accept;
-                const insert = this.format.insert;
 
                 if (value.match(reject))
                     cancelCharacter(reject);
+                else {
+                    const accept = this.format.accept;
+                    const insert = this.format.insert;
 
-                if (value.match(accept))
-                    field.value = value.replace(accept, insert);
-            }
+                    this.handleRender(true);
+                    if (value.match(accept)) 
+                        field.value = value.replace(accept, insert);
+                }
+            } else 
+                this.handleRender(true);
+        }
+        const finish = () => {
+            const notCardName = this.id !== "cardholder";
+            const className = "success";
 
-            this.handleRender(true);
+            if (value.match(this.finished)) {
+                field.classList.add(className);
+
+                const fieldsNotFinished = this.allFields.filter(field => !field.classList.contains(className));
+                
+                if (fieldsNotFinished.length && notCardName) {
+                    fieldsNotFinished[0].focus();
+                } else if (notCardName)
+                    this.submit.focus();
+                
+            } else
+                field.classList.remove(className);
         }
 
         value.match(this.reject) ? cancelCharacter(this.reject) : acceptCharacter();
+        finish();
     }
     handleRender(filled) {
         const value = this.field.value;
+
+        if (!filled)
+         this.field.classList.remove("success")
 
         if (typeof this.empty === "number") {
             const fillWithZero = (string) => string.padEnd(this.empty, 0);
@@ -65,20 +97,34 @@ export default class CardData {
                     this.element.innerText = valueFormatted(fillWithZero(value));
             } else
                 this.element.innerText = fillWithZero(value);
-        } else if (filled)
-            this.element.innerText = value;
-        else
-            this.element.innerText = this.empty;
+        } else {
+            if (filled) 
+                this.element.innerText = value;
+            else 
+                this.element.innerText = this.empty;  
+        } 
     }
     setEvents() {
-        const handleRegex = ({target: field}) => {
-            field.value ? this.handleFill(field) : this.handleRender();
+        const focus = () => {
+            this.allElements.forEach(element => element.classList.add("not-focused"));
+            this.element.classList.remove("not-focused");
+        }
+        const focusOut = () => {
+            this.allElements.forEach(element => element.classList.remove("not-focused"));
+        }
+        const validate = (event) => {
+            const field = event.target;
+            const inputType = event.inputType;
+
+            event.target.value ? this.handleFill(field, inputType) : this.handleRender();
         }
 
-        this.field.addEventListener("input", handleRegex);
+        this.field.addEventListener("focus", focus);
+        this.field.addEventListener("focusout", focusOut);
+        this.field.addEventListener("input", validate);
+        this.field.addEventListener("paste", (e) => e.preventDefault());
     }
 }
-
 
 const handleData = () => {
     const eachData = Object.keys(data);
@@ -88,15 +134,7 @@ const handleData = () => {
         const eachKey = Object.keys(data[dataName]);
 
         eachKey.forEach(key => dice[key] = data[dataName][key]);
-        new CardData(dice).setEvents();
+        new CardData(dice).setEvents;
     });
 }
 handleData();
-
-
-// reject characters
-// standard format (insert zero)
-
-// empty field (insert zero)
-
-// finished field = block new characters and focus next field
