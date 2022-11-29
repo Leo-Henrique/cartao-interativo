@@ -134,7 +134,7 @@ const handleData = () => {
         const eachKey = Object.keys(data[dataName]);
 
         eachKey.forEach(key => dice[key] = data[dataName][key]);
-        new CardData(dice).setEvents;
+        new CardData(dice).setEvents();
     });
 }
 handleData();
