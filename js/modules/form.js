@@ -1,4 +1,5 @@
 import data from "./data.js";
+import {hide as hideError} from "./submitted.js";
 
 export default class CardData {
     constructor(data) {
@@ -115,8 +116,11 @@ export default class CardData {
         const validate = (event) => {
             const field = event.target;
             const inputType = event.inputType;
+            const nextElement = field.nextElementSibling;
+            const errorActive = nextElement && nextElement.classList.contains("error-msg");
 
             event.target.value ? this.handleFill(field, inputType) : this.handleRender();
+            if (errorActive) hideError(field);
         }
 
         this.field.addEventListener("focus", focus);
@@ -127,13 +131,13 @@ export default class CardData {
 }
 
 const handleData = () => {
-    const eachData = Object.keys(data);
+    const fieldsID = Object.keys(data);
 
-    eachData.forEach(dataName => {
-        const dice = {id: dataName};
-        const eachKey = Object.keys(data[dataName]);
+    fieldsID.forEach(id => {
+        const dice = {id};
+        const eachKey = Object.keys(data[id]);
 
-        eachKey.forEach(key => dice[key] = data[dataName][key]);
+        eachKey.forEach(key => dice[key] = data[id][key]);
         new CardData(dice).setEvents();
     });
 }

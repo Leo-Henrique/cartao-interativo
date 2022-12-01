@@ -202,13 +202,30 @@ body {
         flex: initial;
         margin-left: initial;
     }
-    // .form-fields {
-    //     display: none
-    // }
+    .form-fields,
+    .form-result {
+        display: none;
+        opacity: 0;
+        transform: translate3D(0, 30px, 0);
+        transition-property: opacity, transform;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+    
+        &.display {
+            display: block;
+        }
+        &.show {
+            opacity: 1;
+            transform: none;
+        }
+    }
     .form-fields label,
     .form-fields legend {
         display: block;
         margin-bottom: 0.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         @include small-text(#000);
     }
     .form-fields label:not(:first-child),
@@ -229,8 +246,29 @@ body {
         @include small-text($error);
         text-transform: initial;
         letter-spacing: initial;
+        transition-property: height, opacity, transform;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+        overflow: hidden;
         display: block;
-        margin-top: 0.6rem;
+        opacity: 0;
+        transform: translate3D(0, -15px, 0);
+        // border: 1px solid red;
+
+        span {
+            display: inline-block;
+            padding-top: 0.6rem;
+        }
+        &.show {
+            transform: none;
+            opacity: 1;
+        }
+    }
+    .form-fields input#expirationMonth + .error-msg {
+        order: 1;
+    }
+    .form-fields input#expirationYear + .error-msg {
+        order: 2;
     }
     .form-fields input {
         width: 100%;
@@ -262,22 +300,20 @@ body {
         &[type=number]::-webkit-inner-spin-button {
             -webkit-appearance: none;
         }
-        &.error {
-            border-color: $error;
-            box-shadow: inset 0 0 0 1px $error;
-        }
         &.success {
             border-color: $success;
             box-shadow: inset 0 0 0 1px $success;
         }
+        &.error {
+            border-color: $error;
+            box-shadow: inset 0 0 0 1px $error;
+        }
     }
     .form-fields .small-fields {
         display: flex;
+        align-items: flex-start;
         column-gap: 2rem;
 
-        @include breakpoint-sm {
-            align-items: flex-end;
-        }
         .expiration-container  {
             flex: 0 0 170px;
             display: flex;
@@ -295,9 +331,6 @@ body {
                 flex: 1;
             }
         }
-        .expiration-container .error-msg {
-            flex: 1 100%;
-        }
         .cvv-container {
             flex: 190px;
 
@@ -305,12 +338,15 @@ body {
                 flex: 1;
             }
         }
+        .expiration-container .error-msg,
+        .cvv-container .error-msg {
+            flex: 1 100%;
+        }
     }
     // ==========================================
     .form-result {
         width: 100%;
         text-align: center;
-        display: none;
 
         &-icon svg {
             margin: 0 auto calc(1rem * 2);
