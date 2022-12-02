@@ -1,0 +1,42 @@
+.footer-container {
+    max-width: calc(1050px + 30px);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 3rem;
+
+    @include breakpoint-md {
+        text-align: center;
+        align-items: initial;
+    }
+
+    p, span, a {
+        font-size: $small;
+        color: $support-light-3;
+        vertical-align: middle;
+        @include breakpoint-sm {
+            font-size: 1.3rem;
+        }
+    }
+    a {
+        display: inline-block;
+        padding: 0.2rem 0;
+        transition: color 200ms ease-in-out;
+        color: $primary-light-1;
+
+        @include desktop-supported {
+            &:hover {
+                color: $primary-light-2;
+            }
+        }
+        &:active {
+            color: $primary;
+        }
+    }
+}
