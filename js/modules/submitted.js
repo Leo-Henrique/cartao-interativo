@@ -1,6 +1,6 @@
 import data from "./data.js";
 
-export const hide = (field) => {
+export const hide = (field, callback) => {
     const container = field.nextElementSibling;
     const transition = "data-transition";
 
@@ -10,7 +10,11 @@ export const hide = (field) => {
         container.classList.remove("show");
         field.classList.remove("error");
         setTimeout(() => container.style.height = 0);
-        setTimeout(() => container.remove(), 300);
+        setTimeout(() => {
+            container.remove();
+            if (callback)
+                callback();
+        }, 300);
     }
 }
 
@@ -39,15 +43,11 @@ const showError = (text, field) => {
             setTimeout(animation, 20);
         }
     }
-    const review = () => {
-        hide(field);
-        setTimeout(show, duration);
-    }
     const insertion = () => {
         const elementAfterField = field.nextElementSibling;
         const spanNotExist = !elementAfterField || !elementAfterField.classList.contains(className);
 
-        spanNotExist ? show() : review(field);
+        spanNotExist ? show() : hide(field, show);
     }
 
     container.classList.add(className);
