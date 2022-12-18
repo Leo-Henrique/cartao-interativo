@@ -1,0 +1,96 @@
+.modal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    @include fullscreen(
+        $zIndex-modal,
+        0.6,
+        5px,
+        300ms
+    );
+
+    @include breakpoint-sm {
+        justify-content: flex-end;
+        padding: 1.5rem 1.5rem 0;
+
+    }
+    &-dialog {
+        max-width: 470px;
+        width: 100%;
+        padding: 3rem;
+        background-color: $support-light-1;
+        border-radius: 10px;
+        overflow-y: auto;
+        transform: translate3D(0, 30px, 0);
+        opacity: 0;
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+
+        @include breakpoint-sm {
+            padding: 3rem 2rem;
+            border-radius: 10px 10px 0 0;
+        }
+    }
+    &-header .title {
+        @include font-size($title);
+        line-height: 1.2;
+        color: $support-dark-1;
+        margin-bottom: 3rem;
+
+        @include breakpoint-sm {
+            margin-bottom: 2rem;
+        }
+    }
+    &-body {
+        color: $support-light-3 - 60%;
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+
+            @include breakpoint-sm {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+
+                &:last-of-type {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+        strong {
+            color: #000;
+        }
+        #warningButton {
+            @include btn;
+            margin-bottom: 0.6rem;
+
+            @include breakpoint-sm {
+                font-size: 1.4rem;
+            }
+        }
+    }
+    &-footer {
+        font-size: 1.1rem;
+        font-style: italic;
+    }
+    &.display {
+        display: flex;
+    }
+    &.show {
+        opacity: 1;
+
+        .modal-dialog {
+            transform: none;
+            opacity: 1;
+        }
+    }
+}
+
+.modal-scrollbar {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}

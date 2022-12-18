@@ -1,0 +1,78 @@
+.loader-bg {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    @include fullscreen(
+        $zIndex-loader,
+        0.2,
+        20px,
+        200ms
+    );
+
+    .loader {
+        display: flex;
+        flex-direction: column;
+        max-width: 120px;
+        flex: 0 1 120px;
+        height: 6px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+        overflow: hidden;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 10%;
+            height: 100%;
+            border-radius: 5px;
+            background-color: $support-dark-1 - 70%;
+            animation: loader 2.5s ease-in-out infinite;
+        }
+    }
+    &.display {
+        display: flex;
+    }
+    &.show {
+        opacity: 1;
+    }
+}
+
+.loader-scrollbar {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}
+
+
+@keyframes loader {
+    0% {
+        align-self: flex-start;
+        width: 0%;
+        opacity: 0;
+        transform: translate3D(-50px, 0, 0);
+    }
+    25% {
+        width: 100%;
+        opacity: 1;
+        transform: none;
+    }
+    50% {
+        align-self: flex-end;
+        width: 0%;
+        opacity: 0;
+        transform: translate3D(50px, 0, 0);
+    }
+    75%  {
+        width: 100%;
+        opacity: 1;
+        transform: none;
+    }
+    100% {
+        align-self: flex-start;
+        width: 0%;
+        opacity: 0;
+        transform: translate3D(-50px, 0, 0);
+    }
+}

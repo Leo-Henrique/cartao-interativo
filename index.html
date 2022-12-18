@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- end -->
 
+
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
@@ -51,7 +52,46 @@
 
     <title>Cartão interativo | Leonardo Henrique</title>
 </head>
-<body>
+<body >
+
+    <div class="loader-bg">
+        <div class="loader"></div>
+    </div>
+
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2 class="title">
+                    Houve uma incompatibilidade!
+                </h2>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    Sinto muito que você esteja vendo essa mensagem! Infelizmente ocorreu uma incompatibilidade dos recursos utilizados neste projeto com o seu navegador.
+                </p>
+
+                <p>
+                    <strong>
+                        A incompatibilidade impede que as funcionalidades do site funcionem por completo
+                    </strong>. Se desejar, você pode tentar acessar o site através de outro navegador.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <p>
+                    Texto criado em 
+                    <time datetime="2022-12-17">
+                        17 de dezembro de 2022
+                    </time>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/modules/loading.js" 
+    type="module"
+    defer></script>
 
     <main class="main">
         <div class="main-bg"></div>
@@ -213,6 +253,7 @@
             </p>
         </div>
     </footer>
+
 
     <script type="module"
     src="js/script.js"></script>

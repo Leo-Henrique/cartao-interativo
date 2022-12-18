@@ -238,8 +238,7 @@ body {
             margin-top: 2rem;
         }
     }
-    .form-fields input,
-    #btnConfirm {
+    .form-fields input {
         border-radius: 10px;
         padding: 1.2rem;
     }
@@ -369,24 +368,6 @@ body {
         }
     }
     #btnConfirm {
-        display: block;
-        width: 100%;
-        background-color: $support-dark-1;
-        color: $support-light-1;
-        text-align: center;
-        cursor: pointer;
-        transition: background-color 200ms ease-in-out;
-
-        @include desktop-supported {
-            &:hover {
-                background-color: $primary - 30%;
-            }
-        }
-        &:focus {
-            background-color: $primary - 30%;
-        }
-        &:active {
-            background-color: $primary-light-1 - 30%;
-        }
+        @include btn;
     }
 }
