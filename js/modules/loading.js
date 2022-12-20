@@ -7,11 +7,16 @@
         setTimeout(() => bgLoader.classList.add("show"), 20);
     }
     const hideLoader = () => {
-        bgLoader.classList.remove("show");
-        setTimeout(() => {
-            bgLoader.classList.remove("display");
-            document.body.classList.remove("loader-scrollbar");
-        }, 200);
+        const minTime = 200 * 2;
+        const hide = () => {
+            bgLoader.classList.remove("show");
+            setTimeout(() => {
+                bgLoader.classList.remove("display");
+                document.body.classList.remove("loader-scrollbar");
+            }, 200);
+        }
+
+        setTimeout(hide, minTime);
     }
     
     showLoader();
